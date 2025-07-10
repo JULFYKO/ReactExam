@@ -6,46 +6,6 @@
 
 ---
 
-## Встановлення та запуск
-
-1. Клонуйте репозиторій:
-   ```sh
-   git clone https://github.com/JULFYKO/ReactExam.git
-   cd ReactExam
-   ```
-2. Встановіть залежності:
-   ```sh
-   npm install
-   ```
-3. Запустіть додаток:
-   ```sh
-   npm run dev
-   ```
-4. Відкрийте [http://localhost:5173](http://localhost:5173) у браузері.
-
----
-
-## Структура проекту
-
-```
-src/
-  components/
-    MovieList.jsx
-    MovieDetails.jsx
-    MovieCard.jsx
-    Search.jsx
-    Favorites.jsx
-    Sessions.jsx
-    AdminPanel.jsx
-    Auth.jsx
-    Recommendations.jsx
-  App.jsx
-  main.jsx
-  index.css
-```
-
----
-
 ## Опис компонентів
 
 ### App.jsx
@@ -121,24 +81,7 @@ src/
 
 ---
 
-## Технології
-
-- React + Vite
-- React Router
-- CSS (dark theme)
-- TVMaze API
-
----
-
 ## Доступ до адмін-панелі
 
 - Логін: `admin`
 - Пароль: `admin`
-
----
-
-## Примітки
-
-- Всі дані про обрані фільми зберігаються у localStorage.
-- Адмін-панель працює лише у пам'яті (без бекенду).
-- Для реальних проектів рекомендується додати серверну частину та захист.
