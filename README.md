@@ -10,7 +10,7 @@
 
 1. Клонуйте репозиторій:
    ```sh
-   git clone <repo-url>
+   git clone https://github.com/JULFYKO/ReactExam.git
    cd ReactExam
    ```
 2. Встановіть залежності:
