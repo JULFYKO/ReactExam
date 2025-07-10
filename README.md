@@ -1,12 +1,150 @@
-# React + Vite
+# React Cinema App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Опис
 
-Currently, two official plugins are available:
+Це навчальний проект кінотеатру на React, який дозволяє переглядати фільми, шукати, планувати сеанси, додавати у обране, отримувати рекомендації та керувати контентом через адмін-панель. Дані про фільми отримуються з [TVMaze API](https://www.tvmaze.com/api).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Встановлення та запуск
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Клонуйте репозиторій:
+   ```sh
+   git clone <repo-url>
+   cd ReactExam
+   ```
+2. Встановіть залежності:
+   ```sh
+   npm install
+   ```
+3. Запустіть додаток:
+   ```sh
+   npm run dev
+   ```
+4. Відкрийте [http://localhost:5173](http://localhost:5173) у браузері.
+
+---
+
+## Структура проекту
+
+```
+src/
+  components/
+    MovieList.jsx
+    MovieDetails.jsx
+    MovieCard.jsx
+    Search.jsx
+    Favorites.jsx
+    Sessions.jsx
+    AdminPanel.jsx
+    Auth.jsx
+    Recommendations.jsx
+  App.jsx
+  main.jsx
+  index.css
+```
+
+---
+
+## Опис компонентів
+
+### App.jsx
+
+- **Головний компонент**. Відповідає за роутінг між сторінками, навігацію, контроль доступу до адмін-панелі.
+- Всі сторінки підключаються через `<Routes>`.
+- Навігація містить посилання на всі основні розділи.
+
+### MovieList.jsx
+
+- **Головна сторінка** зі списком фільмів.
+- Завантажує фільми з TVMaze API.
+- Реалізує пагінацію (60 фільмів на сторінку).
+- Кожен фільм відображається через MovieCard.
+- Кнопка "Детальніше" веде на сторінку деталей фільму.
+
+### MovieCard.jsx
+
+- **Універсальна картка фільму**.
+- Відображає постер, назву, жанри, рік, рейтинг.
+- Приймає дочірні елементи (наприклад, кнопки "Детальніше", "Видалити").
+
+### MovieDetails.jsx
+
+- **Детальна інформація про фільм**.
+- Завантажує дані про фільм за id з TVMaze API.
+- Відображає опис, жанри, рейтинг, постер, офіційний сайт.
+- Кнопка "Додати у Обране"/"Видалити з Обраного" керує localStorage.
+- Перевіряє, чи фільм вже доданий у обране.
+
+### Search.jsx
+
+- **Пошук фільмів**.
+- Фільтрує фільми за назвою, жанром, роком, рейтингом.
+- Виводить результати через MovieCard.
+- Кнопка "Детальніше" відкриває модальне вікно з інформацією.
+- В модальному вікні є кнопка "Офіційний сайт" (якщо доступний).
+
+### Favorites.jsx
+
+- **Обрані фільми**.
+- Витягує список з localStorage.
+- Відображає всі обрані фільми через MovieCard.
+- Кнопка "Детальніше" веде на сторінку фільму.
+- Кнопка "Видалити" прибирає фільм з обраних.
+
+### Sessions.jsx
+
+- **Розклад сеансів**.
+- Дозволяє вибрати дату, час, фільм та записатися на сеанс.
+- Вихідні дні мають інший розклад годин.
+- Відображає всі заплановані сеанси, дозволяє їх видаляти.
+
+### Recommendations.jsx
+
+- **Рекомендації фільмів**.
+- Завантажує всі фільми з TVMaze API.
+- Фільтрує за параметрами (назва, жанр, рік, рейтинг).
+- Виводить до 10 випадкових рекомендацій.
+
+### AdminPanel.jsx
+
+- **Адмін-панель** (доступна тільки для admin/admin).
+- Дозволяє додавати, редагувати, видаляти фільми та сеанси.
+- Всі зміни зберігаються лише у стані (немає бекенду).
+- Відображає статистику (кількість фільмів та сеансів).
+
+### Auth.jsx
+
+- **Аутентифікація**.
+- Дозволяє увійти або зареєструватися (тільки логін/пароль admin/admin).
+- Після успішного входу відкриває адмін-панель.
+
+---
+
+## Технології
+
+- React + Vite
+- React Router
+- CSS (dark theme)
+- TVMaze API
+
+---
+
+## Доступ до адмін-панелі
+
+- Логін: `admin`
+- Пароль: `admin`
+
+---
+
+## Примітки
+
+- Всі дані про обрані фільми зберігаються у localStorage.
+- Адмін-панель працює лише у пам'яті (без бекенду).
+- Для реальних проектів рекомендується додати серверну частину та захист.
+
+---
+
+## Ліцензія
+
+> Для навчальних цілей.

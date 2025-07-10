@@ -1,68 +1,222 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Basic CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Dark theme body */
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    background-color: #181818;
+    color: #f1f1f1;
+    min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Container class for layout */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
 }
 
+/* Navigation bar */
+nav {
+    background: #202020;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.16);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 32px;
+}
+
+nav a {
+    color: #f1f1f1;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background 0.2s;
+}
+
+nav a:hover {
+    background: #292929;
+}
+
+/* Card style for movie/session/favorite items */
+.card {
+    background: #232323;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.24);
+    padding: 16px;
+    margin-bottom: 24px;
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.32);
+}
+
+/* Button styling */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+    background-color: #ff1744;
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    transition: background 0.2s;
+    margin-top: 8px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+    background-color: #d50000;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+/* Links */
+a {
+    color: #90caf9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Inputs and selects */
+input, select {
+    padding: 8px 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background: #181818;
+    color: #f1f1f1;
+    transition: border 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #90caf9;
+    outline: none;
+}
+
+/* Responsive grid for cards */
+.grid {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* Trailer iframe */
+iframe {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.24);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 32px 0 0 0;
+}
+
+.pagination button {
+    background: #232323;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 16px;
+    margin: 0;
+}
+
+.pagination button.active,
+.pagination button:focus {
+    background: #ff1744;
+    border-color: #ff1744;
+    color: #fff;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Search */
+.search-title {
+    margin-bottom: 24px;
+}
+.search-form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+.error {
+    color: red;
+}
+.not-found {
+    margin-top: 24px;
+    color: #bbb;
+}
+
+/* MovieCard */
+.movie-card {
+    width: 220px;
+}
+.movie-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+.movie-title {
+    font-size: 16px;
+}
+.movie-genres,
+.movie-year,
+.movie-rating {
+    color: #bbb;
+    margin-bottom: 8px;
+}
+
+/* Modal Details */
+.modal-details {
+    max-width: 600px;
+    margin: 32px auto;
+    position: relative;
+}
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #232323;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 4px 12px;
+    cursor: pointer;
+}
+.modal-title {
+    margin-bottom: 12px;
+}
+.modal-img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+.favorite-btn {
+    margin-top: 10px;
 }
