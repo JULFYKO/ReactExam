@@ -57,8 +57,8 @@ const Recommendations = () => {
 
     return (
         <div className="container">
-            <h2 style={{ marginBottom: 24 }}>Рекомендації фільмів</h2>
-            <form onSubmit={handleSearch} style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: 24 }}>
+            <h2 className="recommendations-title">Рекомендації фільмів</h2>
+            <form onSubmit={handleSearch} className="recommendations-form">
                 <input
                     type="text"
                     placeholder="Назва фільму"
@@ -91,14 +91,14 @@ const Recommendations = () => {
                 <button type="submit" disabled={loading}>Шукати рекомендації</button>
             </form>
             {loading && <div>Завантаження...</div>}
-            {error && <div style={{ color: 'red' }}>{error}</div>}
+            {error && <div className="recommendations-error">{error}</div>}
             <div className="grid">
                 {results.map(movie => (
                     <MovieCard key={movie.id} movie={movie} />
                 ))}
             </div>
             {results.length === 0 && searched && !loading && (
-                <div style={{ marginTop: 24, color: '#bbb' }}>Нічого не знайдено</div>
+                <div className="recommendations-not-found">Нічого не знайдено</div>
             )}
         </div>
     );

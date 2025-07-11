@@ -18,7 +18,6 @@ const AdminPanel = () => {
     const [newSessionMovieId, setNewSessionMovieId] = useState('');
     const [newSessionTime, setNewSessionTime] = useState('');
 
-    // Movie handlers
     const addMovie = () => {
         if (!newMovieTitle || !newMoviePrice) return;
         setMovies([
@@ -42,7 +41,6 @@ const AdminPanel = () => {
         setSessions(sessions.filter(s => s.movieId !== id));
     };
 
-    // Session handlers
     const addSession = () => {
         if (!newSessionMovieId || !newSessionTime) return;
         setSessions([
@@ -65,57 +63,56 @@ const AdminPanel = () => {
         setSessions(sessions.filter(s => s.id !== id));
     };
 
-    // Statistics
     const totalMovies = movies.length;
     const totalSessions = sessions.length;
 
     return (
-        <div className="container">
-            <h2>Адмін панель</h2>
-            <div className="card" style={{ marginBottom: 24 }}>
-                <b>Додайте фільми:</b>
-                <div style={{ display: 'flex', gap: 8, margin: '16px 0' }}>
+        <div className="container admin-panel-container">
+            <h2 className="admin-panel-title">Адмін панель</h2>
+            <div className="card admin-panel-card">
+                <span className="admin-panel-label">Додайте фільми:</span>
+                <div className="admin-panel-flex">
                     <input
                         placeholder="Назва фільму"
                         value={newMovieTitle}
                         onChange={e => setNewMovieTitle(e.target.value)}
-                        style={{ flex: 1 }}
+                        className="admin-panel-movie-input"
                     />
                     <input
                         type="number"
                         placeholder="Ціна"
                         value={newMoviePrice}
                         onChange={e => setNewMoviePrice(e.target.value)}
-                        style={{ width: 80 }}
+                        className="admin-panel-price-input"
                     />
-                    <button onClick={addMovie}>Додати</button>
+                    <button className="admin-panel-btn" onClick={addMovie}>Додати</button>
                 </div>
-                <ul>
+                <ul className="admin-panel-list">
                     {movies.map(movie => (
-                        <li key={movie.id} style={{ marginBottom: 12 }}>
+                        <li key={movie.id}>
                             <input
                                 value={movie.title}
                                 onChange={e => editMovieTitle(movie.id, e.target.value)}
-                                style={{ width: 180, marginRight: 8 }}
+                                className="admin-panel-movie-input"
                             />
                             <input
                                 type="number"
                                 value={movie.price}
                                 onChange={e => editMoviePrice(movie.id, e.target.value)}
-                                style={{ width: 80, marginRight: 8 }}
+                                className="admin-panel-price-input"
                             />
-                            <button onClick={() => deleteMovie(movie.id)}>Видалити</button>
+                            <button className="admin-panel-btn" onClick={() => deleteMovie(movie.id)}>Видалити</button>
                         </li>
                     ))}
                 </ul>
             </div>
-            <div className="card" style={{ marginBottom: 24 }}>
-                <b>Додайте сеанси:</b>
-                <div style={{ display: 'flex', gap: 8, margin: '16px 0' }}>
+            <div className="card admin-panel-card">
+                <span className="admin-panel-label">Додайте сеанси:</span>
+                <div className="admin-panel-flex">
                     <select
                         value={newSessionMovieId}
                         onChange={e => setNewSessionMovieId(e.target.value)}
-                        style={{ flex: 1 }}
+                        className="admin-panel-movie-input"
                     >
                         <option value="">Оберіть фільм</option>
                         {movies.map(m => (
@@ -126,17 +123,17 @@ const AdminPanel = () => {
                         placeholder="Час"
                         value={newSessionTime}
                         onChange={e => setNewSessionTime(e.target.value)}
-                        style={{ width: 80 }}
+                        className="admin-panel-price-input"
                     />
-                    <button onClick={addSession}>Додати</button>
+                    <button className="admin-panel-btn" onClick={addSession}>Додати</button>
                 </div>
-                <ul>
+                <ul className="admin-panel-list">
                     {sessions.map(session => (
-                        <li key={session.id} style={{ marginBottom: 12 }}>
+                        <li key={session.id}>
                             <select
                                 value={session.movieId}
                                 onChange={e => editSessionMovieId(session.id, e.target.value)}
-                                style={{ width: 180, marginRight: 8 }}
+                                className="admin-panel-session-select"
                             >
                                 {movies.map(m => (
                                     <option key={m.id} value={m.id}>{m.title}</option>
@@ -145,17 +142,17 @@ const AdminPanel = () => {
                             <input
                                 value={session.time}
                                 onChange={e => editSessionTime(session.id, e.target.value)}
-                                style={{ width: 80, marginRight: 8 }}
+                                className="admin-panel-session-time"
                             />
-                            <button onClick={() => deleteSession(session.id)}>Видалити</button>
+                            <button className="admin-panel-btn" onClick={() => deleteSession(session.id)}>Видалити</button>
                         </li>
                     ))}
                 </ul>
             </div>
-            <div className="card">
-                <b>Статистика:</b>
-                <div>Кількість фільмів: {totalMovies}</div>
-                <div>Кількість сеансів: {totalSessions}</div>
+            <div className="card admin-panel-card">
+                <span className="admin-panel-label">Статистика:</span>
+                <div className="admin-panel-stat">Кількість фільмів: {totalMovies}</div>
+                <div className="admin-panel-stat">Кількість сеансів: {totalSessions}</div>
             </div>
         </div>
     );

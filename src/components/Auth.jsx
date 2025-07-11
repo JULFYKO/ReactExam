@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const Auth = ({ onAuthSuccess }) => {
     const [isLogin, setIsLogin] = useState(true);
     const [form, setForm] = useState({ email: '', password: '', confirmPassword: '' });
@@ -20,7 +21,6 @@ const Auth = ({ onAuthSuccess }) => {
             setError('Паролі не співпадають');
             return;
         }
-        // Only allow admin/admin
         if (form.email === 'admin' && form.password === 'admin') {
             if (onAuthSuccess) onAuthSuccess();
             setForm({ email: '', password: '', confirmPassword: '' });
@@ -31,7 +31,7 @@ const Auth = ({ onAuthSuccess }) => {
 
     return (
         <div className="container">
-            <div className="card" style={{ maxWidth: 340, margin: '0 auto' }}>
+            <div className="card auth-card">
                 <h2>{isLogin ? 'Вхід' : 'Реєстрація'}</h2>
                 <form onSubmit={handleSubmit}>
                     <input
@@ -41,7 +41,7 @@ const Auth = ({ onAuthSuccess }) => {
                         value={form.email}
                         onChange={handleChange}
                         required
-                        style={{ display: 'block', marginBottom: 10, width: '100%' }}
+                        className="auth-input"
                     />
                     <input
                         type="password"
@@ -50,7 +50,7 @@ const Auth = ({ onAuthSuccess }) => {
                         value={form.password}
                         onChange={handleChange}
                         required
-                        style={{ display: 'block', marginBottom: 10, width: '100%' }}
+                        className="auth-input"
                     />
                     {!isLogin && (
                         <input
@@ -60,21 +60,21 @@ const Auth = ({ onAuthSuccess }) => {
                             value={form.confirmPassword}
                             onChange={handleChange}
                             required
-                            style={{ display: 'block', marginBottom: 10, width: '100%' }}
+                            className="auth-input"
                         />
                     )}
-                    {error && <div style={{ color: 'red', marginBottom: 10 }}>{error}</div>}
-                    <button type="submit" style={{ width: '100%', marginBottom: 10 }}>
+                    {error && <div className="auth-error">{error}</div>}
+                    <button type="submit" className="auth-btn">
                         {isLogin ? 'Увійти' : 'Зареєструватися'}
                     </button>
                 </form>
-                <button onClick={() => setIsLogin(!isLogin)} style={{ width: '100%' }}>
+                <button onClick={() => setIsLogin(!isLogin)} className="auth-btn">
                     {isLogin ? 'Немає акаунта? Зареєструватися' : 'Вже є акаунт? Увійти'}
                 </button>
-                <div style={{ marginTop: 16, fontSize: 14, color: '#bbb' }}>
+                <div className="auth-info">
                     <b>Доступ до адмін панелі:</b><br />
-                    Логін: <span style={{ color: '#fff' }}>admin</span><br />
-                    Пароль: <span style={{ color: '#fff' }}>admin</span>
+                    Логін: <span className="auth-info-login">admin</span><br />
+                    Пароль: <span className="auth-info-login">admin</span>
                 </div>
             </div>
         </div>

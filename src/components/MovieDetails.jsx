@@ -14,7 +14,6 @@ const MovieDetails = () => {
             .then(data => {
                 setMovie(data);
                 setLoading(false);
-                // Перевірити чи є в обраних
                 const storedFavorites = localStorage.getItem('favorites');
                 if (storedFavorites) {
                     const arr = JSON.parse(storedFavorites);

@@ -1,11 +1,9 @@
-/* Basic CSS reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Dark theme body */
 body {
     font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
     background-color: #181818;
@@ -13,14 +11,12 @@ body {
     min-height: 100vh;
 }
 
-/* Container class for layout */
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 24px;
 }
 
-/* Navigation bar */
 nav {
     background: #202020;
     box-shadow: 0 2px 8px rgba(0,0,0,0.16);
@@ -43,7 +39,6 @@ nav a:hover {
     background: #292929;
 }
 
-/* Card style for movie/session/favorite items */
 .card {
     background: #232323;
     border-radius: 12px;
@@ -57,7 +52,6 @@ nav a:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.32);
 }
 
-/* Button styling */
 button {
     background-color: #ff1744;
     color: #fff;
@@ -75,14 +69,12 @@ button:hover {
     background-color: #d50000;
 }
 
-/* Headings */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     margin-bottom: 16px;
     color: #fff;
 }
 
-/* Links */
 a {
     color: #90caf9;
     text-decoration: none;
@@ -92,7 +84,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Inputs and selects */
 input, select {
     padding: 8px 12px;
     border: 1px solid #333;
@@ -110,7 +101,6 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* Responsive grid for cards */
 .grid {
     display: flex;
     gap: 24px;
@@ -118,13 +108,11 @@ input:focus, select:focus {
     justify-content: flex-start;
 }
 
-/* Trailer iframe */
 iframe {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.24);
 }
 
-/* Pagination */
 .pagination {
     display: flex;
     justify-content: center;
@@ -154,7 +142,6 @@ iframe {
     cursor: not-allowed;
 }
 
-/* Search */
 .search-title {
     margin-bottom: 24px;
 }
@@ -172,7 +159,6 @@ iframe {
     color: #bbb;
 }
 
-/* MovieCard */
 .movie-card {
     width: 220px;
 }
@@ -191,7 +177,6 @@ iframe {
     margin-bottom: 8px;
 }
 
-/* Modal Details */
 .modal-details {
     max-width: 600px;
     margin: 32px auto;
@@ -219,4 +204,160 @@ iframe {
 }
 .favorite-btn {
     margin-top: 10px;
+}
+
+.admin-panel-card {
+    margin-bottom: 24px;
+}
+
+.admin-panel-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-panel-list li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.admin-panel-movie-input {
+    width: 180px;
+    margin-right: 8px;
+}
+
+.admin-panel-price-input {
+    width: 80px;
+    margin-right: 8px;
+}
+
+.admin-panel-session-select {
+    width: 180px;
+    margin-right: 8px;
+}
+
+.admin-panel-session-time {
+    width: 80px;
+    margin-right: 8px;
+}
+
+.admin-panel-flex {
+    display: flex;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.admin-panel-stat {
+    margin-top: 8px;
+}
+
+
+
+.admin-panel-title {
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.admin-panel-label {
+    font-weight: bold;
+}
+
+
+
+.sessions-date-card {
+    margin-bottom: 24px;
+}
+
+.sessions-date-input {
+    margin-left: 8px;
+}
+
+
+.sessions-hour-card {
+    margin-bottom: 16px;
+}
+
+.sessions-movie-card {
+    width: 220px;
+}
+
+.sessions-book-btn {
+    margin-top: 8px;
+}
+
+.sessions-planned-card {
+    margin-top: 32px;
+}
+
+.sessions-none {
+    color: #bbb;
+}
+
+.sessions-planned-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sessions-planned-item {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.sessions-remove-btn {
+    margin-left: 12px;
+}
+
+.recommendations-title {
+    margin-bottom: 24px;
+}
+
+.recommendations-form {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.recommendations-error {
+    color: red;
+}
+
+.recommendations-not-found {
+    margin-top: 24px;
+    color: #bbb;
+}
+
+.auth-card {
+    max-width: 340px;
+    margin: 0 auto;
+}
+
+.auth-input {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.auth-error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.auth-btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.auth-info {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.auth-info-login {
+    color: #fff;
 }

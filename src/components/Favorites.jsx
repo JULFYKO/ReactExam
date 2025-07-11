@@ -7,7 +7,6 @@ const Favorites = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Отримати обрані фільми з локального сховища
         const storedFavorites = localStorage.getItem('favorites');
         if (storedFavorites) {
             setFavorites(JSON.parse(storedFavorites));
@@ -44,3 +43,4 @@ const Favorites = () => {
 };
 
 export default Favorites;
+

@@ -25,7 +25,6 @@ const Search = () => {
             const res = await fetch(url);
             if (!res.ok) throw new Error('Помилка пошуку');
             const data = await res.json();
-            // Фільтрація за жанром, роком, рейтингом
             let filtered = data.map(item => item.show);
             if (genre) {
                 filtered = filtered.filter(show =>
@@ -101,7 +100,6 @@ const Search = () => {
             {results.length === 0 && !loading && !error && (
                 <div className="not-found">Нічого не знайдено</div>
             )}
-            {/* Модальне вікно деталей */}
             {selectedMovie && (
                 <div className="card modal-details">
                     <button
@@ -142,4 +140,3 @@ const Search = () => {
 };
 
 export default Search;
-

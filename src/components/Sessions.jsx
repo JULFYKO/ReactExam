@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// Список фільмів
 const movies = [
     { id: 1, title: 'Fast & Furious' },
     { id: 2, title: 'The Office' },
@@ -10,14 +9,12 @@ const movies = [
     { id: 6, title: 'Interstellar' },
 ];
 
-// Функція для визначення вихідного дня
 function isWeekend(dateStr) {
     const date = new Date(dateStr);
     const day = date.getDay();
     return day === 0 || day === 6;
 }
 
-// Генерує години для вибраної дати
 function getHours(dateStr) {
     if (!dateStr) return [];
     if (isWeekend(dateStr)) {
@@ -30,7 +27,6 @@ const Sessions = () => {
     const [selectedDate, setSelectedDate] = useState('');
     const [plannedSessions, setPlannedSessions] = useState([]);
 
-    // Додаємо запис на сеанс
     const handleBook = (movie, hour) => {
         const exists = plannedSessions.some(
             s => s.date === selectedDate && s.hour === hour && s.movie.id === movie.id
@@ -43,7 +39,6 @@ const Sessions = () => {
         }
     };
 
-    // Видалити запис
     const handleRemove = (idx) => {
         setPlannedSessions(plannedSessions.filter((_, i) => i !== idx));
     };
@@ -53,35 +48,35 @@ const Sessions = () => {
     return (
         <div className="container">
             <h2>Розклад сеансів</h2>
-            <div className="card" style={{ marginBottom: 24 }}>
+            <div className="card sessions-date-card">
                 <label>
                     Дата:
                     <input
                         type="date"
                         value={selectedDate}
                         onChange={e => setSelectedDate(e.target.value)}
-                        style={{ marginLeft: 8 }}
+                        className="sessions-date-input"
                     />
                 </label>
             </div>
             {selectedDate && (
                 <div>
                     {hours.length === 0 ? (
-                        <div className="card">Оберіть дату.</div>
+                        <div className="card sessions-empty-card">Оберіть дату.</div>
                     ) : (
                         hours.map(hour => (
-                            <div key={hour} className="card" style={{ marginBottom: 16 }}>
+                            <div key={hour} className="card sessions-hour-card">
                                 <b>{`${hour}:00`}</b>
                                 <div className="grid">
                                     {movies.map(movie => (
-                                        <div key={movie.id} className="card" style={{ width: 220 }}>
+                                        <div key={movie.id} className="card sessions-movie-card">
                                             <strong>{movie.title}</strong>
                                             <button
                                                 onClick={() => handleBook(movie, hour)}
                                                 disabled={plannedSessions.some(
                                                     s => s.date === selectedDate && s.hour === hour && s.movie.id === movie.id
                                                 )}
-                                                style={{ marginTop: 8 }}
+                                                className="sessions-book-btn"
                                             >
                                                 {plannedSessions.some(
                                                     s => s.date === selectedDate && s.hour === hour && s.movie.id === movie.id
@@ -95,19 +90,18 @@ const Sessions = () => {
                     )}
                 </div>
             )}
-            {/* Заплановані сеанси */}
-            <div className="card" style={{ marginTop: 32 }}>
+            <div className="card sessions-planned-card">
                 <h3>Заплановані сеанси</h3>
                 {plannedSessions.length === 0 ? (
-                    <div style={{ color: '#bbb' }}>Немає запланованих сеансів.</div>
+                    <div className="sessions-none">Немає запланованих сеансів.</div>
                 ) : (
-                    <ul>
+                    <ul className="sessions-planned-list">
                         {plannedSessions.map((s, idx) => (
-                            <li key={idx} style={{ marginBottom: 8 }}>
+                            <li key={idx} className="sessions-planned-item">
                                 <b>{s.movie.title}</b> — {s.date} о {s.hour}:00
                                 <button
-                                    style={{ marginLeft: 12 }}
                                     onClick={() => handleRemove(idx)}
+                                    className="sessions-remove-btn"
                                 >
                                     Видалити
                                 </button>
